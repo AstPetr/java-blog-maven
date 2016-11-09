@@ -28,7 +28,7 @@ protected BasicDataSource data;
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl(dbUrl);
         dataSource.setInitialSize(1);
-        dataSource.setMaxIdle(1);
+        dataSource.setMaxTotal(1);
         return dataSource;
     }
 

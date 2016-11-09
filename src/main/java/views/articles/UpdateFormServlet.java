@@ -46,12 +46,7 @@ public class UpdateFormServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Article a = null;
-        try {
-            a = articlesController.getArticleById(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Article a = articlesController.getArticleById(id);
 
         out.print(
                 "    <form action=\"Update\" accept-charset=\"UTF-8\" method=\"post\">\n" +

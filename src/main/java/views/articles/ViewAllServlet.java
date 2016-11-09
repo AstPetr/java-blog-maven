@@ -45,12 +45,7 @@ public class ViewAllServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        List<Article> list = null;
-        try {
-            list = ArticlesController.getAllArticles();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<Article> list = ArticlesController.getAllArticles();
 
 
         out.print("<ul class=\"articles\">");

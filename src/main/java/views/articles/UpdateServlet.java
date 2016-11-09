@@ -46,12 +46,7 @@ public class UpdateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        int status= 0;
-        try {
-            status = articlesController.update(a);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        int status= articlesController.update(a);
         if(status>0){
             //out.print("<p class='flash'>Straipsnis atnaujintas!</p>");
             response.sendRedirect("ViewArticle?id="+a.getId());
