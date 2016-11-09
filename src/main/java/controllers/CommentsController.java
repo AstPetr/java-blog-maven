@@ -15,13 +15,12 @@ import java.util.List;
 /**
  * Created by Asta on 2016-10-21.
  */
-public class CommentsController extends DatabaseConnection{
+public class CommentsController {
 
-    private BasicDataSource dataSource;
 
     public CommentsController() throws URISyntaxException, SQLException {
-        setDataSource();
-        this.dataSource = data;
+//        setDataSource();
+//        this.dataSource = data;
     }
 
     public void createTable() {
@@ -29,7 +28,7 @@ public class CommentsController extends DatabaseConnection{
                 "CHARACTER SET latin1 NOT NULL, `body` VARCHAR(600) CHARACTER SET latin1 NOT NULL, `parentID` " +
                 "INT(11) NOT NULL, PRIMARY KEY (`id`), KEY `parentID` (`parentID`), CONSTRAINT `comments_ibfk_1` " +
                 "FOREIGN KEY (`parentID`) REFERENCES `articles` (`ID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_c"; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
         } catch (SQLException e) {
@@ -39,7 +38,7 @@ public class CommentsController extends DatabaseConnection{
 
     public void deleteTable() {
         String query = "DROP TABLE comments"; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
         } catch (SQLException e) {
@@ -51,7 +50,7 @@ public class CommentsController extends DatabaseConnection{
         int status = 0;
         String query = "INSERT INTO comments (name, body, parentID)" +
                 " VALUES ('" + c.getName() + "', '" + c.getBody() + "', '" + c.getParentId() + "')"; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
 
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
@@ -64,7 +63,7 @@ public class CommentsController extends DatabaseConnection{
     public List<Comment> getAllCommentsByParentId(int articleId) {
         String query = "SELECT id, name, body FROM comments WHERE parentID = '" + articleId + "'";
         List<Comment> list = new ArrayList<Comment>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) { // ResultSet klasės objektas saugo duomenis iš duombazės
 

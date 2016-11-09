@@ -14,19 +14,18 @@ import java.util.List;
 /**
  * Created by Asta on 2016-10-17.
  */
-public class ArticlesController extends DatabaseConnection{
+public class ArticlesController {
 
 
-    private BasicDataSource dataSource;
     public ArticlesController() throws URISyntaxException, SQLException {
-        setDataSource();
-        this.dataSource = data;
+//        setDataSource();
+//        this.dataSource = data;
     }
 
     public void createTable(String name) {
         String query = "CREATE TABLE " + name
                 + " (id INTEGER NOT NULL, title VARCHAR(255), body VARCHAR(10000), created_at DATE, updated_at DATA, PRIMARY KEY (id))"; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
         } catch (SQLException e) {
@@ -36,7 +35,7 @@ public class ArticlesController extends DatabaseConnection{
 
     public void deleteTable(String name) {
         String query = "DROP TABLE " + name; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
         } catch (SQLException e) {
@@ -47,7 +46,7 @@ public class ArticlesController extends DatabaseConnection{
     public List<Article> getAllArticles() {
         String query = "SELECT id, title, body, created_at, updated_at, userID FROM articles";
         List<Article> list = new ArrayList<Article>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) { // ResultSet klasės objektas saugo duomenis iš duombazės
 
@@ -68,7 +67,7 @@ public class ArticlesController extends DatabaseConnection{
         int status = 0;
         String query = "INSERT INTO articles (title,body,created_at,updated_at,userId)" +
                 " VALUES ('" + a.getTitle() + "', '" + a.getBody() + "', '" + a.getCreated_at() + "', '" + a.getUpdated_at() + "', '" + a.getUserId() + "')"; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
         } catch (SQLException e) {
@@ -80,7 +79,7 @@ public class ArticlesController extends DatabaseConnection{
     public int delete(int id) {
         int status = 0;
         String query = "DELETE FROM articles WHERE id=" + id; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) { // Statement objektas turi metodus kurie leidžia siųsti ir vykdyti užklausas
 
             status = statement.executeUpdate(query); // Statement klasės objekto pagalba vykdome užklausą
@@ -95,7 +94,7 @@ public class ArticlesController extends DatabaseConnection{
         String query = "UPDATE articles SET title = '" + a.getTitle() + "', body = '" + a.getBody() + "', updated_at = '" +
                 a.getUpdated_at() + "' WHERE ID = " + a.getId();
         // System.out.println(query);
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
 
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
@@ -108,7 +107,7 @@ public class ArticlesController extends DatabaseConnection{
     public Article getArticleById(int id) {
         Article a = new Article();
         String query = "SELECT * FROM articles WHERE ID = " + id; // SQL užklausa
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
             if (resultSet.next()) {
@@ -128,7 +127,7 @@ public class ArticlesController extends DatabaseConnection{
     public List<Article> getAllArticlesIdByUserId(int userId) {
         String query = "SELECT id, title, body, created_at, updated_at FROM articles WHERE userID = '" + userId + "'";
         List<Article> list = new ArrayList<Article>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) { // ResultSet klasės objektas saugo duomenis iš duombazės
 

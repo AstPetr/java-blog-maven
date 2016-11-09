@@ -42,15 +42,15 @@ public class AppContextListener implements ServletContextListener,
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println("ServletContextListener started");
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        try {
-            databaseConnection.setDataSource();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        System.out.println("ServletContextListener started");
+//        DatabaseConnection databaseConnection = new DatabaseConnection();
+//        try {
+//            databaseConnection.setDataSource();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
