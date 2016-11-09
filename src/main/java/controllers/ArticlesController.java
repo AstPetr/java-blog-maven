@@ -22,7 +22,7 @@ public class ArticlesController {
 
     private BasicDataSource dataSource;
     public ArticlesController() throws URISyntaxException, SQLException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_RED_URL"));
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
         dataSource = new BasicDataSource();
 
