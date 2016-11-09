@@ -22,6 +22,7 @@ public class ArticlesController extends DatabaseConnection{
 
     private BasicDataSource dataSource;
     public ArticlesController() throws URISyntaxException, SQLException {
+        setDataSource();
         this.dataSource = data;
     }
 
