@@ -29,6 +29,7 @@ protected BasicDataSource data;
         dataSource.setUrl(dbUrl);
         dataSource.setInitialSize(1);
         dataSource.setMaxTotal(1);
+        System.out.println("Datasource created");
         return dataSource;
     }
 
