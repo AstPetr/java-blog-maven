@@ -45,7 +45,12 @@ public class SaveServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        int status = articlesController.save(a);
+        int status = 0;
+        try {
+            status = articlesController.save(a);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         if (status > 0) {
             out.print("<p class='flash'>Straipsnis išsaugotas!</p>");
             request.getRequestDispatcher("index.html").include(request, response);

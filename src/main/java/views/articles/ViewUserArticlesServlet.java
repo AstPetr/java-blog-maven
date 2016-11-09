@@ -57,7 +57,12 @@ public class ViewUserArticlesServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        List<Article> list = ArticlesController.getAllArticlesIdByUserId(userId);
+        List<Article> list = null;
+        try {
+            list = ArticlesController.getAllArticlesIdByUserId(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         out.print("<ul class=\"articles\">");
         for (Article a : list) {

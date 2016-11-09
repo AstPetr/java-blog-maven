@@ -57,7 +57,12 @@ public class ViewArticleServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Article a = articlesController.getArticleById(id);
+        Article a = null;
+        try {
+            a = articlesController.getArticleById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         User u = usersController.getUserById(a.getUserId());
 
         out.println("<h1>" + a.getTitle() + "</h1>");

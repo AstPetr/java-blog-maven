@@ -36,7 +36,12 @@ public class DeleteServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        int status = articlesController.delete(id);
+        int status = 0;
+        try {
+            status = articlesController.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         if (status > 0) {
             out.print("<p class='flash'>Straipsnis ištrintas!</p>");
             request.getRequestDispatcher("View").include(request, response);
