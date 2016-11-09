@@ -17,7 +17,6 @@ public class UsersController extends DatabaseConnection{
     private BasicDataSource dataSource;
 
     public UsersController() throws SQLException, URISyntaxException {
-        setDataSource();
         this.dataSource = data;
 
     }

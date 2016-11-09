@@ -20,7 +20,6 @@ public class CommentsController extends DatabaseConnection{
     private BasicDataSource dataSource;
 
     public CommentsController() throws URISyntaxException, SQLException {
-        setDataSource();
         this.dataSource = data;
     }
 
