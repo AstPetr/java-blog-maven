@@ -17,9 +17,10 @@ import java.util.List;
  */
 public class CommentsController extends DatabaseConnection{
 
-    private BasicDataSource dataSource = data;
+    private BasicDataSource dataSource;
 
     public CommentsController() throws URISyntaxException, SQLException {
+        this.dataSource = data;
     }
 
     public void createTable() {

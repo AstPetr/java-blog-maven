@@ -30,6 +30,6 @@ protected BasicDataSource data;
     }
 
     public void setDataSource() throws URISyntaxException, SQLException {
-        data = this.dataSource();
+        this.data = dataSource();
     }
 }

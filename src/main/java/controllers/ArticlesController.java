@@ -20,9 +20,9 @@ import java.util.List;
 public class ArticlesController extends DatabaseConnection{
 
 
-    private BasicDataSource dataSource = data;
+    private BasicDataSource dataSource;
     public ArticlesController() throws URISyntaxException, SQLException {
-
+        this.dataSource = data;
     }
 
     public void createTable(String name) {
