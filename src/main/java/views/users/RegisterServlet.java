@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("index.html").include(request, response);
             } else {
                 out.print("<p class='flash'>Atsiprasome! Įvyko klaida</p>");
-                request.getRequestDispatcher("index.jsp").include(request, response);
+                request.getRequestDispatcher("index.html").include(request, response);
             }
         } else {
             out.print("<p class='flash'>Slptažodis nesutampa</p>");
