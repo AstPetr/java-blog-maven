@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 //    protected BasicDataSource dataSource;
 
-    static public BasicDataSource dataSource() throws URISyntaxException, SQLException {
+    public BasicDataSource dataSource() throws URISyntaxException, SQLException {
         URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_RED_URL"));
 
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();

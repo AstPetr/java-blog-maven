@@ -20,17 +20,8 @@ public class CommentsController {
     private BasicDataSource dataSource;
 
     public CommentsController() throws URISyntaxException, SQLException {
-        URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_RED_URL"));
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
-        dataSource = new BasicDataSource();
-
-        if (dbUri.getUserInfo() != null) {
-            dataSource.setUsername(dbUri.getUserInfo().split(":")[0]);
-            dataSource.setPassword(dbUri.getUserInfo().split(":")[1]);
-        }
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(dbUrl);
-        dataSource.setInitialSize(1);
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        dataSource = databaseConnection.dataSource();
     }
 
     public void createTable() {
