@@ -20,14 +20,14 @@ public class AppContextListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 
     // Public constructor is required by servlet spec
-    public AppContextListener() throws URISyntaxException, SQLException {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        databaseConnection.setDataSource();
+    public AppContextListener() {
+
     }
 
     // -------------------------------------------------------
     // ServletContextListener implementation
     // -------------------------------------------------------
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
       /* This method is called when the servlet context is
          initialized(when the Web application is deployed). 
@@ -42,8 +42,16 @@ public class AppContextListener implements ServletContextListener,
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        try {
+            databaseConnection.setDataSource();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
       /* This method is invoked when the Servlet Context 
          (the Web application) is undeployed or 

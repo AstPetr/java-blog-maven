@@ -19,7 +19,7 @@ public class ArticlesController extends DatabaseConnection{
 
     private BasicDataSource dataSource;
     public ArticlesController() throws URISyntaxException, SQLException {
-        setDataSource();
+//        setDataSource();
         this.dataSource = data;
     }
 
@@ -71,8 +71,6 @@ public class ArticlesController extends DatabaseConnection{
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,8 +84,6 @@ public class ArticlesController extends DatabaseConnection{
              Statement statement = connection.createStatement()) { // Statement objektas turi metodus kurie leidžia siųsti ir vykdyti užklausas
 
             status = statement.executeUpdate(query); // Statement klasės objekto pagalba vykdome užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace(); // Atspausdiną išsamų klaidos aprašymą.
         }
@@ -103,8 +99,6 @@ public class ArticlesController extends DatabaseConnection{
              Statement statement = connection.createStatement()) {
 
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -125,8 +119,6 @@ public class ArticlesController extends DatabaseConnection{
                 a.setUpdated_at(resultSet.getString("updated_at"));
                 a.setUserId(resultSet.getInt("userId"));
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -147,8 +139,6 @@ public class ArticlesController extends DatabaseConnection{
                 a.setBody(resultSet.getString("body"));
                 list.add(a);
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

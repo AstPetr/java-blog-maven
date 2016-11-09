@@ -17,7 +17,7 @@ public class UsersController extends DatabaseConnection{
     private BasicDataSource dataSource;
 
     public UsersController() throws SQLException, URISyntaxException {
-        setDataSource();
+//        setDataSource();
         this.dataSource = data;
 
     }
@@ -28,8 +28,6 @@ public class UsersController extends DatabaseConnection{
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -40,8 +38,6 @@ public class UsersController extends DatabaseConnection{
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,8 +51,6 @@ public class UsersController extends DatabaseConnection{
              Statement statement = connection.createStatement()) {
 
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,8 +83,6 @@ public class UsersController extends DatabaseConnection{
                 u.setId(resultSet.getInt("id"));
                 u.setPassword("empty");   // Ar reikia pasiimti slaptazodi?
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,8 +101,6 @@ public class UsersController extends DatabaseConnection{
                 u.setId(resultSet.getInt("id"));
                 u.setPassword("empty");   // Ar reikia pasiimti slaptazodi?
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

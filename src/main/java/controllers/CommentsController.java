@@ -20,7 +20,7 @@ public class CommentsController extends DatabaseConnection{
     private BasicDataSource dataSource;
 
     public CommentsController() throws URISyntaxException, SQLException {
-        setDataSource();
+//        setDataSource();
         this.dataSource = data;
     }
 
@@ -32,8 +32,6 @@ public class CommentsController extends DatabaseConnection{
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,8 +42,6 @@ public class CommentsController extends DatabaseConnection{
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,8 +55,6 @@ public class CommentsController extends DatabaseConnection{
              Statement statement = connection.createStatement()) {
 
             status = statement.executeUpdate(query); // Įvykdome SQL užklausą
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,8 +76,6 @@ public class CommentsController extends DatabaseConnection{
                 //c.setParentId(articleId);
                 list.add(c);
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
