@@ -20,7 +20,9 @@ public class AppContextListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 
     // Public constructor is required by servlet spec
-    public AppContextListener() {
+    public AppContextListener() throws URISyntaxException, SQLException {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.setDataSource();
     }
 
     // -------------------------------------------------------

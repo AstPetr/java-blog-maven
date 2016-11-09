@@ -15,13 +15,11 @@ import java.util.List;
 /**
  * Created by Asta on 2016-10-21.
  */
-public class CommentsController {
+public class CommentsController extends DatabaseConnection{
 
-    private BasicDataSource dataSource;
+    private BasicDataSource dataSource = data;
 
     public CommentsController() throws URISyntaxException, SQLException {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        dataSource = databaseConnection.dataSource();
     }
 
     public void createTable() {

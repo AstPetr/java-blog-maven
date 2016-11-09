@@ -10,6 +10,8 @@ import java.sql.SQLException;
  */
 public class DatabaseConnection {
 //    protected BasicDataSource dataSource;
+protected BasicDataSource data;
+
 
     public BasicDataSource dataSource() throws URISyntaxException, SQLException {
         URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_RED_URL"));
@@ -25,5 +27,9 @@ public class DatabaseConnection {
         dataSource.setUrl(dbUrl);
         dataSource.setInitialSize(1);
         return dataSource;
+    }
+
+    public void setDataSource() throws URISyntaxException, SQLException {
+        data = this.dataSource();
     }
 }

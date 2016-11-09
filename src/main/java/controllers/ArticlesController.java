@@ -17,13 +17,12 @@ import java.util.List;
 /**
  * Created by Asta on 2016-10-17.
  */
-public class ArticlesController {
+public class ArticlesController extends DatabaseConnection{
 
 
-    private BasicDataSource dataSource;
+    private BasicDataSource dataSource = data;
     public ArticlesController() throws URISyntaxException, SQLException {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        dataSource = databaseConnection.dataSource();
+
     }
 
     public void createTable(String name) {

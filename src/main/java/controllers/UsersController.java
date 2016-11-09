@@ -13,12 +13,10 @@ import java.sql.Statement;
 /**
  * Created by Asta on 2016-10-20.
  */
-public class UsersController {
-    private BasicDataSource dataSource;
+public class UsersController extends DatabaseConnection{
+    private BasicDataSource dataSource = data;
 
     public UsersController() throws SQLException, URISyntaxException {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        dataSource = databaseConnection.dataSource();
 
     }
 
