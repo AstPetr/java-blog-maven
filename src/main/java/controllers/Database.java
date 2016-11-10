@@ -16,7 +16,7 @@ public final class Database {
 
     static {
         try {
-            URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_RED_URL"));
+            URI dbUri = new URI(System.getenv("DATABASE_URL"));
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
             if (dbUri.getUserInfo() != null) {
                 dataSource.setUsername(dbUri.getUserInfo().split(":")[0]);

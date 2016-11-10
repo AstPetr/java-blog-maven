@@ -13,7 +13,7 @@ import java.sql.Statement;
 /**
  * Created by Asta on 2016-10-20.
  */
-public class UsersController extends DatabaseConnection{
+public class UsersController {
 
     public UsersController() throws SQLException, URISyntaxException {
 //        setDataSource();
